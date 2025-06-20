@@ -68,7 +68,6 @@ h1 {
 
 .agregar-tarea {
     background: #DAA520;
-    color: #1E3A8A;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -79,9 +78,31 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0; /* Eliminar padding interno */
-    margin: 0; /* Eliminar márgenes internos */
-    line-height: 150px; /* Igual al height de .centrado para centrado vertical */
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* Asegurar que el pseudo-elemento no desborde */
+}
+
+.agregar-tarea::before {
+    content: '';
+    position: absolute;
+    width: 70%; /* Proporción del diámetro del círculo */
+    height: 10%; /* Grosor de la línea horizontal */
+    background: #1E3A8A; /* Color del "+" */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.agregar-tarea::after {
+    content: '';
+    position: absolute;
+    width: 10%; /* Grosor de la línea vertical */
+    height: 70%; /* Proporción del diámetro del círculo */
+    background: #1E3A8A; /* Color del "+" */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .agregar-tarea.centrado {
@@ -90,7 +111,6 @@ h1 {
     top: 300px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 10.5em;
 }
 
 .agregar-tarea.derecha {
@@ -98,8 +118,6 @@ h1 {
     height: 50px;
     top: 60px;
     right: 20px;
-    font-size: 3.5em;
-    line-height: 50px; /* Igual al height de .derecha para centrado vertical */
 }
 
 .agregar-tarea:hover {
@@ -401,7 +419,7 @@ h1 {
         justify-content: center;
         text-align: center;
         padding: 0;
-        line-height: 50px; /* Igual al height para centrado vertical */
+        line-height: 50px;
     }
 
     .agregar-tarea.centrado {
@@ -416,7 +434,7 @@ h1 {
         justify-content: center;
         text-align: center;
         padding: 0;
-        line-height: 120px; /* Igual al height para centrado vertical */
+        line-height: 120px;
     }
 
     .controles-temporizador {
