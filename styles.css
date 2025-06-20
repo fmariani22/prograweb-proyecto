@@ -78,6 +78,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1; /* Centrar verticalmente el "+" */
 }
 
 .agregar-tarea.centrado {
@@ -333,7 +334,7 @@ h1 {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #1E3A8A;
+    border: 1px solid #D1D5DB;
     border-radius: 3px;
 }
 
@@ -370,12 +371,18 @@ h1 {
 
     .tabs {
         flex-direction: column;
+        border-bottom: none; /* Eliminar línea blanca del contenedor */
     }
 
     .tab {
         width: 100%;
         text-align: center;
         margin-right: 0;
+        border-bottom: 1px solid #D1D5DB; /* Línea blanca bajo cada tab */
+    }
+
+    .tab:last-child {
+        border-bottom: none; /* Sin línea en el último tab */
     }
 
     .tab:not(:last-child)::after {
@@ -390,7 +397,7 @@ h1 {
     .agregar-tarea.centrado {
         width: 120px;
         height: 120px;
-        top: 200px;
+        top: 300px; /* Más abajo para evitar superposición con tabs */
         font-size: 8em;
     }
 
@@ -402,6 +409,16 @@ h1 {
     .controles-temporizador input {
         width: 100%;
         margin-bottom: 10px;
+    }
+
+    .controles-temporizador button:first-of-type {
+        padding: 14px 20px; /* Botón Iniciar más grande */
+        font-size: 1.1em;
+    }
+
+    .controles-temporizador button:last-of-type {
+        padding: 8px 12px; /* Botón Reiniciar más grande */
+        font-size: 1.1em;
     }
 
     .completada {
@@ -416,6 +433,6 @@ h1 {
     }
 
     .reloj {
-        font-size: 6em;
+        font-size: 5.4em; /* 10% más pequeño */
     }
 }
