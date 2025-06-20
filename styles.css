@@ -78,7 +78,9 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1; /* Centrar verticalmente el "+" */
+    text-align: center; /* Asegurar centrado horizontal */
+    padding: 0; /* Eliminar padding interno */
+    margin: 0; /* Eliminar márgenes internos */
 }
 
 .agregar-tarea.centrado {
@@ -371,18 +373,18 @@ h1 {
 
     .tabs {
         flex-direction: column;
-        border-bottom: none; /* Eliminar línea blanca del contenedor */
+        border-bottom: none;
     }
 
     .tab {
         width: 100%;
         text-align: center;
         margin-right: 0;
-        border-bottom: 1px solid #D1D5DB; /* Línea blanca bajo cada tab */
+        border-bottom: 1px solid #D1D5DB;
     }
 
     .tab:last-child {
-        border-bottom: none; /* Sin línea en el último tab */
+        border-bottom: none;
     }
 
     .tab:not(:last-child)::after {
@@ -392,13 +394,25 @@ h1 {
     .agregar-tarea.derecha {
         top: 80px;
         right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
     }
 
     .agregar-tarea.centrado {
         width: 120px;
         height: 120px;
-        top: 300px; /* Más abajo para evitar superposición con tabs */
+        top: 300px;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 8em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
     }
 
     .controles-temporizador {
@@ -412,12 +426,12 @@ h1 {
     }
 
     .controles-temporizador button:first-of-type {
-        padding: 14px 20px; /* Botón Iniciar más grande */
+        padding: 14px 20px;
         font-size: 1.1em;
     }
 
     .controles-temporizador button:last-of-type {
-        padding: 8px 12px; /* Botón Reiniciar más grande */
+        padding: 8px 12px;
         font-size: 1.1em;
     }
 
@@ -433,6 +447,6 @@ h1 {
     }
 
     .reloj {
-        font-size: 5.4em; /* 10% más pequeño */
+        font-size: 5.4em;
     }
 }
