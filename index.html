@@ -1,14 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> hola mundo</h1> 
-    <h2>Pelu crack</h2>
+    <canvas id="estrellas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+    <canvas id="estela" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+    <header>
+        <h1>DASHBOARD</h1>
+    </header>
+    <div class="tabs">
+        <button class="tab active" onclick="mostrarPestana('pendientes')">PENDIENTES</button>
+        <button class="tab" onclick="mostrarPestana('completadas')">COMPLETADAS</button>
+        <button class="tab" onclick="mostrarPestana('temporizador')">TEMPORIZADOR</button>
+    </div>
+    <div class="contenido">
+        <div id="pendientes" class="pestana active">
+            <button class="agregar-tarea" id="agregar-tarea" onclick="abrirModalCrear()">+</button>
+            <div class="grilla" id="grilla-pendientes"></div>
+        </div>
+        <div id="completadas" class="pestana">
+            <p class="aclaracion">Esta pestaña muestra las tareas completadas en la última semana.</p>
+            <div class="lista-completadas" id="lista-completadas"></div>
+        </div>
+        <div id="temporizador" class="pestana">
+            <div class="reloj" id="reloj">--:--:--</div>
+            <div class="controles-temporizador">
+                <input type="number" min="0" max="23" placeholder="Horas" id="input-horas">
+                <input type="number" min="0" max="59" placeholder="Minutos" id="input-minutos">
+                <button onclick="iniciarTemporizador()">Iniciar</button>
+                <button onclick="reiniciarTemporizador()">Reiniciar</button>
+            </div>
+            <audio id="alarma" src="https://cdn.pixabay.com/download/audio/2023/02/13/audio_8a7d666a27.mp3" preload="auto"></audio>
+        </div>
+    </div>
+    <div class="modal" id="modal-crear">
+        <div class="modal-contenido">
+            <h2>Crear Tarea</h2>
+            <input type="text" id="titulo-tarea" placeholder="Título">
+            <textarea id="descripcion-tarea" placeholder="Descripción"></textarea>
+            <label for="deadline-tarea">Deadline</label>
+            <input type="datetime-local" id="deadline-tarea" placeholder="Fecha y hora límite">
+            <button onclick="crearTarea()">Crear</button>
+            <button onclick="cerrarModalCrear()">Cancelar</button>
+        </div>
+    </div>
+    <div class="modal" id="modal-editar">
+        <div class="modal-contenido">
+            <h2>Editar Tarea</h2>
+            <input type="text" id="editar-titulo" placeholder="Título">
+            <textarea id="editar-descripcion" placeholder="Descripción"></textarea>
+            <label for="editar-deadline">Deadline</label>
+            <input type="datetime-local" id="editar-deadline" placeholder="Fecha y hora límite">
+            <button onclick="guardarEdicion()">Guardar</button>
+            <button onclick="cerrarModalEditar()">Cancelar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>

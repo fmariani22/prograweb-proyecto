@@ -1,3 +1,421 @@
-.{
-    background-color: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #D1D5DB;
+    background: #1A2525;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #D1D5DB;
+    font-size: 3em;
+    font-weight: 700;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #D1D5DB;
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.tab {
+    background: #2D3748;
+    color: #D1D5DB;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border-radius: 8px 8px 0 0;
+    margin-right: 2px;
+    position: relative;
+    font-weight: 600;
+}
+
+.tab:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: #D1D5DB;
+}
+
+.tab:hover, .tab.active {
+    background: #4B5563;
+}
+
+.pestana {
+    display: none;
+}
+
+.pestana.active {
+    display: block;
+}
+
+.agregar-tarea {
+    background: #DAA520;
+    color: #1E3A8A;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agregar-tarea.centrado {
+    width: 150px;
+    height: 150px;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10.5em;
+}
+
+.agregar-tarea.derecha {
+    width: 50px;
+    height: 50px;
+    top: 60px;
+    right: 20px;
+    font-size: 3.5em;
+}
+
+.agregar-tarea:hover {
+    transform: scale(1.1);
+}
+
+.agregar-tarea.centrado:hover::after {
+    content: 'Añadir tarea pendiente';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background: #2D3748;
+    color: #D1D5DB;
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 0.16em;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.agregar-tarea.derecha:hover::after {
+    content: 'Añadir tarea pendiente';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background: #2D3748;
+    color: #D1D5DB;
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 0.4em;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.grilla {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.tarea {
+    background: #4B5563;
+    color: #D1D5DB;
+    border: 1px solid #D1D5DB;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tarea h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.tarea .descripcion {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    background: #E5E7EB;
+    color: #2D3748;
+    padding: 5px;
+    border: 1px solid #D1D5DB;
+    border-radius: 3px;
+}
+
+.tarea .deadline {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.tarea .tarde {
+    color: #DC2626;
+    font-weight: bold;
+}
+
+.tarea button {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.tarea .completar {
+    background: #D1D5DB;
+    color: #2D3748;
+    padding: 8px 12px;
+}
+
+.tarea .editar {
+    background: #4B5563;
+    color: #D1D5DB;
+    padding: 6px 10px;
+}
+
+.tarea .borrar {
+    background: #F57C7C;
+    color: #D1D5DB;
+    padding: 6px 8px;
+}
+
+.tarea button:hover {
+    opacity: 0.9;
+}
+
+.aclaracion {
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #D1D5DB;
+}
+
+.lista-completadas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.completada {
+    background: #4B5563;
+    color: #D1D5DB;
+    border: 1px solid #D1D5DB;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completada .info {
+    flex: 1;
+}
+
+.completada .detalles {
+    text-align: right;
+    font-size: 0.9em;
+    margin-right: 20px;
+}
+
+.completada button {
+    background: #D1D5DB;
+    color: #2D3748;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.completada button:hover {
+    background: #E5E7EB;
+}
+
+.reloj {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 8.75em;
+    text-align: center;
+    margin: 100px auto;
+    color: #D1D5DB;
+}
+
+.controles-temporizador {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.controles-temporizador input {
+    padding: 8px;
+    border: 1px solid #D1D5DB;
+    border-radius: 3px;
+    width: 80px;
+}
+
+.controles-temporizador button {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.controles-temporizador button:first-of-type {
+    background: #DAA520;
+    color: #1E3A8A;
+    padding: 12px 18px;
+}
+
+.controles-temporizador button:last-of-type {
+    background: #4B5563;
+    color: #D1D5DB;
+    padding: 6px 10px;
+}
+
+.controles-temporizador button:hover {
+    opacity: 0.9;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-contenido {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-contenido h2 {
+    color: #1E3A8A;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-contenido label {
+    color: #1E3A8A;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.modal-contenido input, .modal-contenido textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #1E3A8A;
+    border-radius: 3px;
+}
+
+.modal-contenido button {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.modal-contenido button:first-of-type {
+    background: #DAA520;
+    color: #1E3A8A;
+    padding: 8px 12px;
+}
+
+.modal-contenido button:last-of-type {
+    background: #4B5563;
+    color: #D1D5DB;
+    padding: 6px 10px;
+}
+
+/* Responsividad */
+@media (max-width: 700px) {
+    .grilla {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+    .grilla {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+
+    .tab:not(:last-child)::after {
+        display: none;
+    }
+
+    .agregar-tarea.derecha {
+        top: 80px;
+        right: 10px;
+    }
+
+    .agregar-tarea.centrado {
+        width: 120px;
+        height: 120px;
+        top: 200px;
+        font-size: 8em;
+    }
+
+    .controles-temporizador {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .controles-temporizador input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .completada {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .completada .detalles {
+        text-align: left;
+        margin-top: 10px;
+        margin-right: 0;
+    }
+
+    .reloj {
+        font-size: 6em;
+    }
 }
