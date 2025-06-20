@@ -80,29 +80,32 @@ h1 {
     text-align: center;
     padding: 0;
     margin: 0;
-    overflow: hidden; /* Asegurar que el pseudo-elemento no desborde */
+    overflow: hidden;
+    font-size: 0; /* Ocultar texto, usar pseudo-elementos para el "+" */
 }
 
 .agregar-tarea::before {
     content: '';
     position: absolute;
-    width: 70%; /* Proporción del diámetro del círculo */
-    height: 10%; /* Grosor de la línea horizontal */
-    background: #1E3A8A; /* Color del "+" */
+    width: 70%;
+    height: 10%;
+    background: #1E3A8A;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1; /* Asegurar que esté encima del tooltip */
 }
 
 .agregar-tarea::after {
     content: '';
     position: absolute;
-    width: 10%; /* Grosor de la línea vertical */
-    height: 70%; /* Proporción del diámetro del círculo */
-    background: #1E3A8A; /* Color del "+" */
+    width: 10%;
+    height: 70%;
+    background: #1E3A8A;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1; /* Asegurar que esté encima del tooltip */
 }
 
 .agregar-tarea.centrado {
@@ -120,37 +123,29 @@ h1 {
     right: 20px;
 }
 
-.agregar-tarea:hover {
-    transform: scale(1.1);
-}
-
-.agregar-tarea.centrado:hover::after {
+.agregar-tarea:hover::after {
     content: 'Añadir tarea pendiente';
     position: absolute;
     top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
     background: #2D3748;
     color: #D1D5DB;
     padding: 3px 5px;
     border-radius: 3px;
-    font-size: 0.16em;
     white-space: nowrap;
+    z-index: 2; /* Asegurar que esté encima del "+" */
+}
+
+.agregar-tarea.centrado:hover::after {
+    right: 100%;
+    transform: translateY(-50%);
+    font-size: 0.16em;
     margin-right: 5px;
 }
 
 .agregar-tarea.derecha:hover::after {
-    content: 'Añadir tarea pendiente';
-    position: absolute;
-    top: 50%;
     right: 100%;
     transform: translateY(-50%);
-    background: #2D3748;
-    color: #D1D5DB;
-    padding: 3px 5px;
-    border-radius: 3px;
     font-size: 0.4em;
-    white-space: nowrap;
     margin-right: 5px;
 }
 
