@@ -23,6 +23,15 @@ h1 {
     font-weight: 700;
 }
 
+h1 .beta {
+    font-family: 'Montserrat', sans-serif; /* Mantener coherencia, pero puedes cambiar a otra si prefieres */
+    font-size: 0.5em;
+    font-weight: 400;
+    color: #D1D5DB;
+    vertical-align: super; /* Subir ligeramente "beta" */
+    margin-left: 5px; /* Espacio después de TASK MANAGER */
+}
+
 .tabs {
     display: flex;
     border-bottom: 2px solid #D1D5DB;
@@ -112,7 +121,6 @@ h1 {
     top: 50%;
     right: 100%;
     transform: translateY(-50%);
-    background: #2D3748;
     color: #D1D5DB;
     padding: 3px 5px;
     border-radius: 3px;
@@ -127,7 +135,6 @@ h1 {
     top: 50%;
     right: 100%;
     transform: translateY(-50%);
-    background: #2D3748;
     color: #D1D5DB;
     padding: 3px 5px;
     border-radius: 3px;
@@ -417,6 +424,10 @@ h1 {
         text-align: center;
         padding: 0;
         line-height: 120px; /* Igual al height para centrado vertical */
+    }
+
+    .agregar-tarea:hover::after {
+        display: none; /* Ocultar tooltip en móvil */
     }
 
     .controles-temporizador {
