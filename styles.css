@@ -15,21 +15,25 @@ body {
 header {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Centrar el contenido del header */
 }
 
 h1 {
     color: #D1D5DB;
     font-size: 3em;
     font-weight: 700;
+    display: inline; /* Fluir como texto inline */
+    margin: 0; /* Sin márgenes adicionales */
 }
 
 h1 .beta {
-    font-family: 'Montserrat', sans-serif; /* Mantener coherencia, pero puedes cambiar a otra si prefieres */
+    font-family: 'Montserrat', sans-serif; /* Mantener coherencia */
     font-size: 0.5em;
     font-weight: 400;
     color: #D1D5DB;
-    vertical-align: super; /* Subir ligeramente "beta" */
-    margin-left: 5px; /* Espacio después de TASK MANAGER */
+    margin-left: 0; /* Pegar "beta" a "TASK MANAGER" */
+    vertical-align: baseline; /* Alinear con la línea base de "TASK MANAGER" */
 }
 
 .tabs {
